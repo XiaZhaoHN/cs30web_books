@@ -13,7 +13,7 @@ db.execute("CREATE TABLE books(id SERIAL PRIMARY KEY, isbn varchar(10) NOT NULL,
 
 # Read csv and insert into db table
 def main():
-	f = open("test.csv")
+	f = open("books.csv")
 	reader = csv.reader(f)
 	i = 0
 	for isbn, title, author, year in reader:
