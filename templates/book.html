@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	{{ book.title }}
+{% endblock %}
+
+{% block body %}
+	<h1>{{ book.title }}</h1>
+	<div class="container">
+		<table style="border: 1px solid black">
+			<tr>
+				<th>ISBN:</th>
+				<td>{{ book.isbn }}</td>
+			</tr>
+			<tr>
+				<th>Title:</th>
+				<td>{{ book.title }}</td>
+			</tr>
+			<tr>
+				<th>Author:</th>
+				<td>{{ book.author }}</td>
+			</tr>
+			<tr>
+				<th>Year:</th>
+				<td>{{ book.year }}</td>
+			</tr>
+			<tr>
+				<th>Review count:</th>
+				<td>{{ reviews_count }}</td>
+			</tr>
+			<tr>
+				<th>Average rating:</th>
+				<td>{{ average_rating }}</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+	<h2 style="margin-top:25px">Commands</h2>
+		<ul>
+			{% for comment in comments %}
+			<li>
+				{{ comment.username }}: {{ comment.rate }}
+				<br/>
+				{{ comment.comment }}
+				<br/>
+				{{ comment.timestamp }}
+			</li>
+			{% endfor %}
+		</ul>
+		<div>
+			<h6>Please summit your rate and review comment below</h6>
+			<form action="{{ url_for('book', isbn=isbn) }}" method="post">
+					<input autocomplete="off" autofocus type="number" min="1" max="5" placeholder="Rate" name="rate" required>
+					<input autocomplete="off" autofocus type="text" placeholder="Enter your comments here" name="comment" required>
+					<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+{% endblock %}

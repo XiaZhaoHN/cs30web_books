@@ -1,0 +1,18 @@
+table, td, th {
+  border: 1px solid black;
+}
+
+.form-rate{
+  width:30px;
+  height:10px;
+}
+
+.form-comment{
+  width:100%;
+  height:20px;
+}
+
+h1 {
+  margin: 25px;
+  color: red;
+}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Results
+{% endblock %}
+
+{% block body %}
+	<h1>Results</h1>
+	<div>
+		<form action="/books" method="post">
+			<div>
+				<ul>
+					{% for book in books %}
+					<li>
+						<a href="{{ url_for('book', isbn=book.isbn) }}" method="post">
+							isbn: {{ book.isbn }}, title:{{ book.title }}, author: {{ book.author }}, year: {{ book.year }}
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</form>
+	</div>
+{% endblock %}
