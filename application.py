@@ -148,7 +148,7 @@ def book(isbn):
 def api(isbn):
     book = db.execute("SELECT * from books WHERE isbn = :isbn", {"isbn":isbn}).fetchone()
     if book is None:
-        raise InvalidUsage(404, 'The requested ISBN number isn’t in your database')
+        raise InvalidUsage(404, 'The requested ISBN number does not exist in the database')
         #return render_template("error.html", message="Book does not exist")
     else:
         reviews_count = 0
