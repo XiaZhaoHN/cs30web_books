@@ -21,9 +21,9 @@ This is a flask web server to search for book information and give feedback.
 When all steps are complete, open a window in the web browser, go to `https://localhost:5000` to use the app.
 
 ## Usage
-`/register`: To register a new user account
-`/login`: To login an existing user
-`/`: The search page
-`/books`: The results from search page
-`/books/{isbn number}`: A detailed page of a book. User can rate and comment, but only once for each book per user
-`/api/{isbn number}`: An api for a book, returns a json response. When no matches, returns 404
+- `/register`: To register a new user account
+- `/login`: To login an existing user
+- `/`: The search page
+- `/books`: The results from search page
+- `/books/{isbn number}`: A detailed page of a book. User can rate and comment, but only once for each book per user
+- `/api/{isbn number}`: An api for a book, returns a json response. When no matches, returns 404
