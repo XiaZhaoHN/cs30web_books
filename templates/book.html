@@ -1,59 +1,61 @@
 {% extends "layout.html" %}
 
 {% block title %}
-	{{ book.title }}
+{{ book.title }}
 {% endblock %}
 
 {% block body %}
-	<h1>{{ book.title }}</h1>
-	<div class="container">
-		<table style="border: 1px solid black">
+<h1>{{ book.title }}</h1>
+<div class="container">
+	<div>
+		<table>
 			<tr>
-				<th>ISBN:</th>
-				<td>{{ book.isbn }}</td>
+				<th>ISBN </th>
+				<td>{{ book.isbn }} &nbsp</td>
 			</tr>
 			<tr>
-				<th>Title:</th>
-				<td>{{ book.title }}</td>
+				<th>Title </th>
+				<td>{{ book.title }} &nbsp</td>
 			</tr>
 			<tr>
-				<th>Author:</th>
-				<td>{{ book.author }}</td>
+				<th>Author </th>
+				<td>{{ book.author }} &nbsp</td>
 			</tr>
 			<tr>
-				<th>Year:</th>
-				<td>{{ book.year }}</td>
+				<th>Year </th>
+				<td>{{ book.year }} &nbsp</td>
 			</tr>
 			<tr>
-				<th>Review count:</th>
-				<td>{{ reviews_count }}</td>
+				<th>Review count </th>
+				<td>{{ reviews_count }} &nbsp</td>
 			</tr>
 			<tr>
-				<th>Average rating:</th>
-				<td>{{ average_rating }}</td>
+				<th>Average rating &nbsp</th>
+				<td>{{ average_rating }} &nbsp</td>
 			</tr>
 		</table>
 	</div>
 	<div>
-	<h2 style="margin-top:25px">Commands</h2>
+		<h2>Comments</h2>
+		<div>
+			<h6>Please summit your rate and review comment below</h6>
+			<form class="comment-form" action="{{ url_for('book', isbn=isbn) }}" method="post">
+				<input autocomplete="off" autofocus class="form-rate" type="number" min="1" max="5" placeholder="Rate" name="rate" required>
+				<input autocomplete="off" autofocus class="form-comment" type="text" placeholder="Enter your comments here" name="comment" required>
+				<button type="submit">Submit</button>
+			</form>
+		</div>
 		<ul>
 			{% for comment in comments %}
 			<li>
 				{{ comment.username }}: {{ comment.rate }}
-				<br/>
+				<br />
 				{{ comment.comment }}
-				<br/>
+				<br />
 				{{ comment.timestamp }}
 			</li>
 			{% endfor %}
 		</ul>
-		<div>
-			<h6>Please summit your rate and review comment below</h6>
-			<form action="{{ url_for('book', isbn=isbn) }}" method="post">
-					<input autocomplete="off" autofocus type="number" min="1" max="5" placeholder="Rate" name="rate" required>
-					<input autocomplete="off" autofocus type="text" placeholder="Enter your comments here" name="comment" required>
-					<button type="submit">Submit</button>
-			</form>
-		</div>
 	</div>
+</div>
 {% endblock %}
